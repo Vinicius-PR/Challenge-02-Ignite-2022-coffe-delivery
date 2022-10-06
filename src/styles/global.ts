@@ -12,4 +12,20 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
     font-weight: 400;
   }
+
+  body {
+    padding-bottom: 4rem;
+  }
+
+  @media (max-width: 1024px) {
+    html {
+      font-size: 93.75%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 87,50%;
+    }
+  }
 `
