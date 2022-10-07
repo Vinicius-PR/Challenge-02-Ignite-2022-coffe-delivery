@@ -13,7 +13,6 @@ export const IntroContainer = styled.div`
   }
 
   @media (max-width: 680px) {
-    flex-wrap: wrap;
     margin-top: 1rem;
     margin-bottom: 1rem;
     gap: 0;
