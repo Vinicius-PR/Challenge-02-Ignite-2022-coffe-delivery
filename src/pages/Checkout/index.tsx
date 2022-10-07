@@ -1,11 +1,11 @@
 import { CheckoutAddress } from '../../components/CheckoutAddress'
+import { CoffeeCard } from '../../components/CoffeeCard'
 import { PaymentsMethods } from '../../components/PaymentsMethods'
 import {
   CheckoutAddressAndPayment,
   CheckoutContainer,
   CheckoutDetalis,
   CheckoutProducts,
-  ListProducts,
 } from './styles'
 
 export function Checkout() {
@@ -19,9 +19,10 @@ export function Checkout() {
           <PaymentsMethods />
         </CheckoutAddressAndPayment>
       </CheckoutDetalis>
+
       <CheckoutProducts>
         <h2>Cafés selecionados</h2>
-        <ListProducts>Products</ListProducts>
+        <CoffeeCard />
       </CheckoutProducts>
     </CheckoutContainer>
   )

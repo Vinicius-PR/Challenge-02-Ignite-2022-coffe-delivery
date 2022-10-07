@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 
-export const CheckoutAddressContainer = styled.div``
+export const CheckoutAddressContainer = styled.div`
+  padding: 2.5rem 0;
+  @media (max-width: 480px) {
+    padding: 0.8rem 0;
+  }
+`
 
 export const CheckoutAddressTitle = styled.div`
   display: flex;
@@ -56,5 +61,8 @@ export const CheckoutForm = styled.form`
   div {
     display: flex;
     gap: 0.75rem;
+    @media (max-width: 480px) {
+      flex-wrap: wrap;
+    }
   }
 `

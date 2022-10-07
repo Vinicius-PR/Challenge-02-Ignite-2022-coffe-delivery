@@ -1,10 +1,13 @@
 import styled from 'styled-components'
 
 export const PaymentsContainer = styled.div`
-  padding-top: 2.5rem;
+  padding: 2.5rem 0;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  @media (max-width: 480px) {
+    padding: 0.8rem 0;
+  }
 `
 
 export const PaymentsTitle = styled.div`
@@ -26,6 +29,10 @@ export const PaymentsTitle = styled.div`
 export const PayMethods = styled.div`
   display: flex;
   gap: 0.75rem;
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+  }
 
   div {
     display: flex;
