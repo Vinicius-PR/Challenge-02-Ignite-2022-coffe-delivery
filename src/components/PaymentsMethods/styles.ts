@@ -34,7 +34,8 @@ export const PayMethods = styled.div`
     flex-direction: column;
   }
 
-  div {
+  label {
+    position: relative;
     display: flex;
     flex: 1;
     font-size: 0.75rem;
@@ -45,9 +46,25 @@ export const PayMethods = styled.div`
     color: ${(props) => props.theme['base-text']};
     text-transform: uppercase;
     padding: 1rem 0;
+    border: 1px solid transparent;
     svg {
       color: ${(props) => props.theme.purple};
       margin-left: 1rem;
     }
   }
+
+  label:has(input:checked) {
+    border: 1px solid green;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+`
+
+export const ErrorPaymentMessage = styled.div`
+  margin: 0 auto;
+  font-size: 0.8rem;
+  color: red;
 `

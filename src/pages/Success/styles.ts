@@ -42,3 +42,16 @@ export const SuccessImg = styled.div`
     }
   }
 `
+
+export const GoBackdiv = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  button {
+    background-color: ${(props) => props.theme.purple};
+    color: ${(props) => props.theme.white};
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+  }
+`

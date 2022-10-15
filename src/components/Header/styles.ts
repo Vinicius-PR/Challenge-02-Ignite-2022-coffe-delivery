@@ -39,4 +39,20 @@ export const Cart = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 6px;
+  position: relative;
+
+  div {
+    position: absolute;
+    top: -0.625rem;
+    right: -0.625rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme['yellow-dark']};
+    color: ${(props) => props.theme.white};
+  }
 `

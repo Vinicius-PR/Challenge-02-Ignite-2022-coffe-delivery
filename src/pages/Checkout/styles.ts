@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CheckoutContainer = styled.div`
+export const CheckoutContainerForm = styled.form`
   display: flex;
   gap: 2rem;
   @media (max-width: 890px) {

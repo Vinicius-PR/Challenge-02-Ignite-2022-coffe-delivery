@@ -80,3 +80,11 @@ export const Payment = styled.div`
 export const PaymentIcon = styled(BaseIconContainer)`
   background-color: ${(props) => props.theme['yellow-dark']};
 `
+
+export const ProductsList = styled.div`
+  display: flex;
+  gap: 0.75rem;
+`
+export const ProductIcon = styled(BaseIconContainer)`
+  background-color: ${(props) => props.theme['purple-dark']};
+`

@@ -1,7 +1,21 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
-import { PaymentsContainer, PaymentsTitle, PayMethods } from './styles'
+import {
+  ErrorPaymentMessage,
+  PaymentsContainer,
+  PaymentsTitle,
+  PayMethods,
+} from './styles'
+import { useFormContext } from 'react-hook-form'
+
+interface PaymentFormProps {
+  payment: string
+}
 
 export function PaymentsMethods() {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<PaymentFormProps>()
   return (
     <PaymentsContainer>
       <PaymentsTitle>
@@ -15,21 +29,44 @@ export function PaymentsMethods() {
       </PaymentsTitle>
 
       <PayMethods>
-        <div>
+        <label htmlFor="cartao-credito">
           <CreditCard size={16} />
+          <input
+            type="radio"
+            id="cartao-credito"
+            value="Cartão de Credito"
+            {...register('payment')}
+          />
           <p>cartão de credito</p>
-        </div>
+        </label>
 
-        <div>
+        <label htmlFor="cartao-debito">
           <Bank size={16} />
-          <p>cartão de débito</p>
-        </div>
+          <input
+            type="radio"
+            id="cartao-debito"
+            value="Cartão de Debito"
+            {...register('payment')}
+          />
+          <p>cartão de Débito</p>
+        </label>
 
-        <div>
+        <label htmlFor="dinheiro">
           <Money />
+          <input
+            type="radio"
+            id="dinheiro"
+            value="Dinheiro"
+            {...register('payment')}
+          />
           <p>Dinheiro</p>
-        </div>
+        </label>
       </PayMethods>
+      {errors.payment?.message ? (
+        <ErrorPaymentMessage>{errors.payment?.message}</ErrorPaymentMessage>
+      ) : (
+        ''
+      )}
     </PaymentsContainer>
   )
 }

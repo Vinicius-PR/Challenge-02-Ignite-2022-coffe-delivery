@@ -8,33 +8,83 @@ import {
   CoffeeDescription,
   CoffeePrice,
 } from './styles'
-import coffeeImg from '../../assets/products/expresso-tradicional.png'
 import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
+import { useContext, useState } from 'react'
+import { CardContext } from '../../contexts/CardContext'
 
-export function Coffee() {
+export interface CoffeeProps {
+  id: string
+  title: string
+  subtitle: string
+  tags: string[]
+  price: number
+  imageUrl: string
+}
+
+export function Coffee({
+  id,
+  title,
+  subtitle,
+  tags,
+  price,
+  imageUrl,
+}: CoffeeProps) {
+  const { handleAddCoffeeToCard } = useContext(CardContext)
+  const [quantity, setQuantity] = useState(1)
+
+  function onDecreaseQuantity() {
+    setQuantity((state) => {
+      if (state === 1) {
+        return 1
+      } else {
+        return state - 1
+      }
+    })
+  }
+
+  function onIncreaseQuantity() {
+    setQuantity((state) => state + 1)
+  }
+
+  function onAddCoffeeToCard() {
+    const newCoffeeToCard = {
+      id,
+      title,
+      price,
+      imageUrl,
+      quantity,
+    }
+    handleAddCoffeeToCard(newCoffeeToCard)
+  }
+
   return (
     <CoffeeContainer>
-      <img src={coffeeImg} alt="" />
+      <img src={imageUrl} alt="" />
       <CoffeeType>
-        <span>tradicional</span>
-        <span>tradicional</span>
+        {tags.map((tag) => (
+          <span key={id + tag}>{tag}</span>
+        ))}
       </CoffeeType>
-      <CoffeeTitle>Expresso Tradicional</CoffeeTitle>
-      <CoffeeDescription>
-        O tradicional café feito com agua quente e grãos moidos
-      </CoffeeDescription>
+      <CoffeeTitle>{title}</CoffeeTitle>
+      <CoffeeDescription>{subtitle}</CoffeeDescription>
 
       <CoffeeFooter>
         <CoffeePrice>
-          R$ <span>9,90</span>
+          R$ <span>{price.toFixed(2).replace('.', ',')}</span>
         </CoffeePrice>
 
         <CoffeeQuantity>
-          <Minus size={14} weight="bold" /> 1 <Plus size={14} weight="bold" />
+          <Minus size={14} weight="bold" onClick={onDecreaseQuantity} />
+          {quantity}
+          <Plus size={14} weight="bold" onClick={onIncreaseQuantity} />
         </CoffeeQuantity>
 
         <CartBtn>
-          <ShoppingCartSimple size={22} weight="fill" />
+          <ShoppingCartSimple
+            onClick={() => onAddCoffeeToCard()}
+            size={22}
+            weight="fill"
+          />
         </CartBtn>
       </CoffeeFooter>
     </CoffeeContainer>

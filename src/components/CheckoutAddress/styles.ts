@@ -27,7 +27,7 @@ export const CheckoutAddressTitle = styled.div`
   }
 `
 
-export const CheckoutForm = styled.form`
+export const CheckoutAddressInputs = styled.div`
   margin-top: 2rem;
   margin-bottom: 2.5rem;
   display: flex;
@@ -37,6 +37,7 @@ export const CheckoutForm = styled.form`
   input {
     padding: 0.75rem;
     border: none;
+    max-height: 2.6rem;
     background-color: ${(props) => props.theme['base-input']};
     color: ${(props) => props.theme['base-text']};
   }
@@ -59,10 +60,27 @@ export const CheckoutForm = styled.form`
   }
 
   div {
-    display: flex;
+    /* display: flex;
     gap: 0.75rem;
     @media (max-width: 480px) {
       flex-wrap: wrap;
-    }
+    } */
   }
+`
+
+export const InputBox = styled.div`
+  display: flex;
+  gap: 0.75rem;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+  }
+`
+
+export const InputError = styled.span`
+  color: red;
+  font-size: 0.7rem;
 `

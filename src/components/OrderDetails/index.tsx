@@ -1,4 +1,7 @@
-import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { Coffee, CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useContext } from 'react'
+import { AddressPaymentContext } from '../../contexts/AddressPaymentContext'
+import { CardContext } from '../../contexts/CardContext'
 import {
   Address,
   AddressIcon,
@@ -7,9 +10,13 @@ import {
   DeliveryTime,
   Payment,
   PaymentIcon,
+  ProductIcon,
+  ProductsList,
 } from './styles'
 
 export function OrderDetails() {
+  const { address, paymentMethod } = useContext(AddressPaymentContext)
+  const { products, total } = useContext(CardContext)
   return (
     <Container>
       <div>
@@ -19,9 +26,17 @@ export function OrderDetails() {
           </AddressIcon>
           <div>
             <p>
-              Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+              Entrega em{' '}
+              <strong>
+                {address.street}, {address.number}
+              </strong>
             </p>
-            <p>Farrapos - Porto Alegre, RS</p>
+            <p>
+              <strong>{address.complement}</strong>
+            </p>
+            <p>
+              {address.neighborhood} - {address.city}, {address.state}
+            </p>
           </div>
         </Address>
 
@@ -41,9 +56,29 @@ export function OrderDetails() {
           </PaymentIcon>
           <div>
             <p>Pagamento na entrega</p>
-            <strong>Cartão de Crédito</strong>
+            <strong>
+              {paymentMethod} - R$ {total.toFixed(2).replace('.', ',')}
+            </strong>
           </div>
         </Payment>
+
+        <ProductsList>
+          <ProductIcon>
+            <Coffee size={16} />
+          </ProductIcon>
+          <div>
+            <h4>Cafés</h4>
+            {products.map((product) => {
+              return (
+                <div key={product.id}>
+                  <strong>
+                    {product.title} x {product.quantity} unidade(s)
+                  </strong>
+                </div>
+              )
+            })}
+          </div>
+        </ProductsList>
       </div>
     </Container>
   )

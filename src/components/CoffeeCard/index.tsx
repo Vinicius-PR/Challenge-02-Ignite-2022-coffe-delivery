@@ -8,68 +8,88 @@ import {
   ProductPrice,
   RemoveCoffeeBtn,
 } from './styles'
-import coffeeImg from '../../assets/products/expresso-tradicional.png'
 import { Minus, Plus, Trash } from 'phosphor-react'
+import { useContext } from 'react'
+import { CardContext } from '../../contexts/CardContext'
 
 export function CoffeeCard() {
+  const {
+    products,
+    total,
+    handleDecreaseCoffeeByOne,
+    handleIncreaseCoffeeByOne,
+    handleRemoveCoffeeFromCard,
+  } = useContext(CardContext)
+
   return (
-    <Container>
-      <Product>
-        <img src={coffeeImg} alt="" />
-        <ProductDetails>
-          <p>Expresso Tradicional</p>
-          <div>
-            <CoffeeQuantity>
-              <Minus size={14} weight="bold" /> 1{' '}
-              <Plus size={14} weight="bold" />
-            </CoffeeQuantity>
-
-            <RemoveCoffeeBtn>
-              <Trash size={16} />
-              <p>remover</p>
-            </RemoveCoffeeBtn>
-          </div>
-        </ProductDetails>
-        <ProductPrice>R$ 9,90</ProductPrice>
-      </Product>
-
-      <Product>
-        <img src={coffeeImg} alt="" />
-        <ProductDetails>
-          <p>Latte</p>
-          <div>
-            <CoffeeQuantity>
-              <Minus size={14} weight="bold" /> 1{' '}
-              <Plus size={14} weight="bold" />
-            </CoffeeQuantity>
-
-            <RemoveCoffeeBtn>
-              <Trash size={16} />
-              <p>remover</p>
-            </RemoveCoffeeBtn>
-          </div>
-        </ProductDetails>
-        <ProductPrice>R$ 19,90</ProductPrice>
-      </Product>
-
-      <Prices>
+    <>
+      {products.length === 0 ? (
         <div>
-          <p>Total de itens</p>
-          <span>R$ 29,70</span>
+          <h3> Carrinho vazio :( </h3>
         </div>
+      ) : (
+        <>
+          <h2>Cafés selecionados</h2>
+          <Container>
+            {products.map((product) => {
+              return (
+                <Product key={product.id}>
+                  <img src={product.imageUrl} alt="" />
+                  <ProductDetails>
+                    <p>{product.title}</p>
+                    <div>
+                      <CoffeeQuantity>
+                        <Minus
+                          size={14}
+                          weight="bold"
+                          onClick={() => handleDecreaseCoffeeByOne(product.id)}
+                        />
+                        {product.quantity}
+                        <Plus
+                          size={14}
+                          weight="bold"
+                          onClick={() => handleIncreaseCoffeeByOne(product.id)}
+                        />
+                      </CoffeeQuantity>
 
-        <div>
-          <p>Entrega</p>
-          <span>R$ 3,50</span>
-        </div>
+                      <RemoveCoffeeBtn
+                        onClick={() => handleRemoveCoffeeFromCard(product.id)}
+                      >
+                        <Trash size={16} />
+                        <p>remover</p>
+                      </RemoveCoffeeBtn>
+                    </div>
+                  </ProductDetails>
+                  <ProductPrice>
+                    {(product.price * product.quantity)
+                      .toFixed(2)
+                      .replace('.', ',')}
+                  </ProductPrice>
+                </Product>
+              )
+            })}
 
-        <div>
-          <strong>Total</strong>
-          <strong>R$ 33,20</strong>
-        </div>
-      </Prices>
+            <Prices>
+              <div>
+                <p>Total de itens</p>
+                <span>R$ {total.toFixed(2).replace('.', ',')}</span>
+              </div>
 
-      <ConfirmBtn>Confirmar Pedido</ConfirmBtn>
-    </Container>
+              <div>
+                <p>Entrega</p>
+                <span>R$ 3,50</span>
+              </div>
+
+              <div>
+                <strong>Total</strong>
+                <strong>R$ {(total + 3.5).toFixed(2).replace('.', ',')}</strong>
+              </div>
+            </Prices>
+
+            <ConfirmBtn type="submit">Confirmar Pedido</ConfirmBtn>
+          </Container>
+        </>
+      )}
+    </>
   )
 }
