@@ -18,7 +18,7 @@ The Application manage a shopping cart of a coffee shop. It must have the follow
 * Increase or remove the quantity of items in the cart.
 * Have a form to use put his address.
 * Show the total of items in the cart on the Header.
-* Show the total value of the sum of all items, acording with its quantity and price.
+* Show the total value of the sum of all items, according with its quantity and price.
 
 In addition, the aplication uses the following advanced features:
 
