@@ -53,5 +53,6 @@ export const GoBackdiv = styled.div`
     border: none;
     padding: 1rem 2rem;
     border-radius: 6px;
+    cursor: pointer;
   }
 `

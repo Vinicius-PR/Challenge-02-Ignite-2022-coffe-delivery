@@ -7,7 +7,6 @@ import {
   CheckoutAddressAndPayment,
   CheckoutContainerForm,
   CheckoutDetalis,
-  CheckoutProducts,
 } from './styles'
 import { useContext } from 'react'
 import { AddressPaymentContext } from '../../contexts/AddressPaymentContext'
@@ -71,9 +70,7 @@ export function Checkout() {
           </CheckoutAddressAndPayment>
         </CheckoutDetalis>
 
-        <CheckoutProducts>
-          <CoffeeCard />
-        </CheckoutProducts>
+        <CoffeeCard />
       </CheckoutContainerForm>
     </FormProvider>
   )

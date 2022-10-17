@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const ContainerTitle = styled.h2`
+  margin-bottom: 1rem;
+`
+
 export const Container = styled.div`
   padding: 2.5rem;
   background-color: ${(props) => props.theme['base-card']};
@@ -114,4 +118,21 @@ export const ConfirmBtn = styled.button`
   line-height: 1.3;
   background-color: ${(props) => props.theme.yellow};
   padding: 0.75rem 0;
+  cursor: pointer;
+`
+export const EmptyCardContainer = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    border: none;
+    border-radius: 6px;
+    margin-top: 1rem;
+    background-color: ${(props) => props.theme.purple};
+    color: ${(props) => props.theme.white};
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+  }
 `

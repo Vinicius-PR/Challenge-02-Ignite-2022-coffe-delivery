@@ -2,34 +2,46 @@ import {
   CoffeeQuantity,
   ConfirmBtn,
   Container,
+  ContainerTitle,
+  EmptyCardContainer,
   Prices,
   Product,
   ProductDetails,
   ProductPrice,
   RemoveCoffeeBtn,
 } from './styles'
-import { Minus, Plus, Trash } from 'phosphor-react'
+import { Minus, Plus, SmileySad, Trash } from 'phosphor-react'
 import { useContext } from 'react'
-import { CardContext } from '../../contexts/CardContext'
+import { CartContext } from '../../contexts/CardContext'
+import { useNavigate } from 'react-router-dom'
 
 export function CoffeeCard() {
+  const navigate = useNavigate()
   const {
     products,
     total,
     handleDecreaseCoffeeByOne,
     handleIncreaseCoffeeByOne,
     handleRemoveCoffeeFromCard,
-  } = useContext(CardContext)
+  } = useContext(CartContext)
+
+  function onBtnClickToSeeCoffees() {
+    navigate('/')
+  }
 
   return (
     <>
       {products.length === 0 ? (
-        <div>
-          <h3> Carrinho vazio :( </h3>
-        </div>
+        <EmptyCardContainer>
+          <h2> Carrinho vazio</h2>
+          <SmileySad size={34} />
+          <button type="button" onClick={onBtnClickToSeeCoffees}>
+            Olhar Cafés
+          </button>
+        </EmptyCardContainer>
       ) : (
-        <>
-          <h2>Cafés selecionados</h2>
+        <div>
+          <ContainerTitle>Cafés selecionados</ContainerTitle>
           <Container>
             {products.map((product) => {
               return (
@@ -88,7 +100,7 @@ export function CoffeeCard() {
 
             <ConfirmBtn type="submit">Confirmar Pedido</ConfirmBtn>
           </Container>
-        </>
+        </div>
       )}
     </>
   )

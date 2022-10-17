@@ -58,14 +58,6 @@ export const CheckoutAddressInputs = styled.div`
   input[name='uf'] {
     width: 3.75rem;
   }
-
-  div {
-    /* display: flex;
-    gap: 0.75rem;
-    @media (max-width: 480px) {
-      flex-wrap: wrap;
-    } */
-  }
 `
 
 export const InputBox = styled.div`

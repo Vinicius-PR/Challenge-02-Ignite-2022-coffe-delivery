@@ -47,6 +47,7 @@ export const PayMethods = styled.div`
     text-transform: uppercase;
     padding: 1rem 0;
     border: 1px solid transparent;
+    cursor: pointer;
     svg {
       color: ${(props) => props.theme.purple};
       margin-left: 1rem;

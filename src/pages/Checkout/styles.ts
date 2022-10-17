@@ -20,9 +20,3 @@ export const CheckoutAddressAndPayment = styled.div`
   flex-direction: column;
   gap: 0.75rem;
 `
-
-export const CheckoutProducts = styled.div`
-  h2 {
-    margin-bottom: 1rem;
-  }
-`

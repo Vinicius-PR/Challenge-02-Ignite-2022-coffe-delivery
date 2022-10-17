@@ -1,7 +1,7 @@
 import { Coffee, CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { useContext } from 'react'
 import { AddressPaymentContext } from '../../contexts/AddressPaymentContext'
-import { CardContext } from '../../contexts/CardContext'
+import { CartContext } from '../../contexts/CardContext'
 import {
   Address,
   AddressIcon,
@@ -16,7 +16,7 @@ import {
 
 export function OrderDetails() {
   const { address, paymentMethod } = useContext(AddressPaymentContext)
-  const { products, total } = useContext(CardContext)
+  const { products, total } = useContext(CartContext)
   return (
     <Container>
       <div>

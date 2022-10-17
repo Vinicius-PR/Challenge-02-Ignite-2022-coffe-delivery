@@ -1,5 +1,5 @@
 import { produce } from 'immer'
-import { createContext, ReactNode, useReducer } from 'react'
+import { createContext, ReactNode, useEffect, useReducer } from 'react'
 
 interface CoffeeProductProps {
   id: string
@@ -9,12 +9,12 @@ interface CoffeeProductProps {
   quantity: number
 }
 
-interface CardState {
+interface CartState {
   products: CoffeeProductProps[]
   total: number
 }
 
-interface CardContextType {
+interface CartContextType {
   products: CoffeeProductProps[]
   total: number
   handleAddCoffeeToCard: (newCoffeeToCard: CoffeeProductProps) => void
@@ -24,15 +24,15 @@ interface CardContextType {
   handleResetCard: () => void
 }
 
-interface CardContextProviderProps {
+interface CartContextProviderProps {
   children: ReactNode
 }
 
-export const CardContext = createContext({} as CardContextType)
+export const CartContext = createContext({} as CartContextType)
 
-export function CardContextProvider({ children }: CardContextProviderProps) {
-  const [cardState, dispatch] = useReducer(
-    (state: CardState, action: any) => {
+export function CartContextProvider({ children }: CartContextProviderProps) {
+  const [cartState, dispatch] = useReducer(
+    (state: CartState, action: any) => {
       switch (action.type) {
         case 'ADD_COFFEE_AT_CARD': {
           const currentValuePrice =
@@ -115,9 +115,23 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
       products: [],
       total: 0,
     },
+    () => {
+      const storedStateAsJSON = localStorage.getItem(
+        'coffee-delivery:card-state-1.0.0',
+      )
+
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON)
+      }
+    },
   )
 
-  const { products, total } = cardState
+  const { products, total } = cartState
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cartState)
+    localStorage.setItem('coffee-delivery:card-state-1.0.0', stateJSON)
+  }, [cartState])
 
   function handleAddCoffeeToCard(newCoffeeToCard: CoffeeProductProps) {
     dispatch({
@@ -162,7 +176,7 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
   }
 
   return (
-    <CardContext.Provider
+    <CartContext.Provider
       value={{
         products,
         total,
@@ -174,6 +188,6 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
       }}
     >
       {children}
-    </CardContext.Provider>
+    </CartContext.Provider>
   )
 }

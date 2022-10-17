@@ -10,7 +10,7 @@ import {
 } from './styles'
 import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
 import { useContext, useState } from 'react'
-import { CardContext } from '../../contexts/CardContext'
+import { CartContext } from '../../contexts/CardContext'
 
 export interface CoffeeProps {
   id: string
@@ -29,7 +29,7 @@ export function Coffee({
   price,
   imageUrl,
 }: CoffeeProps) {
-  const { handleAddCoffeeToCard } = useContext(CardContext)
+  const { handleAddCoffeeToCard } = useContext(CartContext)
   const [quantity, setQuantity] = useState(1)
 
   function onDecreaseQuantity() {
