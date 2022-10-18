@@ -57,7 +57,8 @@ export function OrderDetails() {
           <div>
             <p>Pagamento na entrega</p>
             <strong>
-              {paymentMethod} - R$ {total.toFixed(2).replace('.', ',')}
+              {paymentMethod} - R$ {total.toFixed(2).replace('.', ',')} (sem o
+              frete)
             </strong>
           </div>
         </Payment>

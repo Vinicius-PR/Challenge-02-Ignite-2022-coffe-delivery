@@ -92,4 +92,8 @@ export const CartBtn = styled.button`
   cursor: pointer;
 
   margin-left: 0.5rem;
+
+  &:active {
+    background-color: ${(props) => props.theme.purple};
+  }
 `
