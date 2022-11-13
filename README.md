@@ -66,7 +66,7 @@ If shows the version, you are good to go. If not, go to https://nodejs.org/en/ a
 
 If you don't have an IDE, install one of you preference. In my case, I used Visual Studio Code.
 
-### Thrid
+### Third
 
 You clone the project. Use the commande line on your folder:
  > git clone https://github.com/Vinicius-PR/Challenge-02-Ignite-2022-coffe-delivery
