@@ -30,7 +30,7 @@ In addition, the aplication uses the following advanced features:
 
 * **Zip Code api:** The application has a feature to retrieve the address from zip  code that the user will put on the form. This way, can auto complete the data that will be found from api.
 
-* **localStorage:** LocalStorage is used to maintain the cart data. So it won't be lost the user refreshes the page.
+* **localStorage:** LocalStorage is used to maintain the cart data. So it won't be lost if the user refreshes the page.
 
 * **Responsiveness:** To let the challenge completed, I included in the responsive design. So the application looks good on mobile and desktop.
 
