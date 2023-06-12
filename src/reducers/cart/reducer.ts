@@ -18,19 +18,19 @@ export function cartReducer(state: CartState, action: any) {
   switch (action.type) {
     case ActionsCartTypes.ADD_COFFEE_TO_CART: {
       const currentValuePrice =
-        action.payload.newCoffeeToCard.quantity *
-        action.payload.newCoffeeToCard.price
+        action.payload.newCoffeeToCart.quantity *
+        action.payload.newCoffeeToCart.price
 
       const currentProductIndex = state.products.findIndex((product) => {
-        return product.id === action.payload.newCoffeeToCard.id
+        return product.id === action.payload.newCoffeeToCart.id
       })
 
       return produce(state, (draft) => {
         if (currentProductIndex > -1) {
           draft.products[currentProductIndex].quantity +=
-            action.payload.newCoffeeToCard.quantity
+            action.payload.newCoffeeToCart.quantity
         } else {
-          draft.products.push(action.payload.newCoffeeToCard)
+          draft.products.push(action.payload.newCoffeeToCart)
         }
         draft.total += currentValuePrice
         draft.total = Math.round(draft.total * 100) / 100

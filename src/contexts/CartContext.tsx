@@ -11,11 +11,11 @@ import { cartReducer, CoffeeProductProps } from '../reducers/cart/reducer'
 interface CartContextType {
   products: CoffeeProductProps[]
   total: number
-  handleAddCoffeeToCard: (newCoffeeToCard: CoffeeProductProps) => void
+  handleAddCoffeeToCart: (newCoffeeToCart: CoffeeProductProps) => void
   handleDecreaseCoffeeByOne: (coffeeId: string) => void
   handleIncreaseCoffeeByOne: (coffeeId: string) => void
-  handleRemoveCoffeeFromCard: (coffeeId: string) => void
-  handleResetCard: () => void
+  handleRemoveCoffeeFromCart: (coffeeId: string) => void
+  handleResetCart: () => void
 }
 
 interface CartContextProviderProps {
@@ -33,11 +33,16 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     },
     () => {
       const storedStateAsJSON = localStorage.getItem(
-        'coffee-delivery:card-state-1.0.0',
+        'coffee-delivery:cart-state-1.0.0',
       )
 
       if (storedStateAsJSON) {
         return JSON.parse(storedStateAsJSON)
+      } else {
+        return {
+          products: [],
+          total: 0,
+        }
       }
     },
   )
@@ -46,11 +51,11 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   useEffect(() => {
     const stateJSON = JSON.stringify(cartState)
-    localStorage.setItem('coffee-delivery:card-state-1.0.0', stateJSON)
+    localStorage.setItem('coffee-delivery:cart-state-1.0.0', stateJSON)
   }, [cartState])
 
-  function handleAddCoffeeToCard(newCoffeeToCard: CoffeeProductProps) {
-    dispatch(addCoffeeToCartAction(newCoffeeToCard))
+  function handleAddCoffeeToCart(newCoffeeToCart: CoffeeProductProps) {
+    dispatch(addCoffeeToCartAction(newCoffeeToCart))
   }
 
   function handleDecreaseCoffeeByOne(coffeeId: string) {
@@ -61,11 +66,11 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(increaseCoffeeByOneAction(coffeeId))
   }
 
-  function handleRemoveCoffeeFromCard(coffeeId: string) {
+  function handleRemoveCoffeeFromCart(coffeeId: string) {
     dispatch(removeCoffeeFromCartAction(coffeeId))
   }
 
-  function handleResetCard() {
+  function handleResetCart() {
     dispatch(resetCartAction())
   }
 
@@ -74,11 +79,11 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       value={{
         products,
         total,
-        handleAddCoffeeToCard,
+        handleAddCoffeeToCart,
         handleDecreaseCoffeeByOne,
         handleIncreaseCoffeeByOne,
-        handleRemoveCoffeeFromCard,
-        handleResetCard,
+        handleRemoveCoffeeFromCart,
+        handleResetCart,
       }}
     >
       {children}

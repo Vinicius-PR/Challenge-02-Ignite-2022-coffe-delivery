@@ -6,7 +6,7 @@ export const ContainerTitle = styled.h2`
 
 export const Container = styled.div`
   padding: 2.5rem;
-  background-color: ${(props) => props.theme['base-card']};
+  background-color: ${(props) => props.theme['base-cart']};
   border-radius: 6px 44px 6px 44px;
 
   @media (max-width: 425px) {
@@ -120,7 +120,7 @@ export const ConfirmBtn = styled.button`
   padding: 0.75rem 0;
   cursor: pointer;
 `
-export const EmptyCardContainer = styled.div`
+export const EmptyCartContainer = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;

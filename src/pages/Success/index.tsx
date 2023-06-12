@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import deliveryImg from '../../assets/delivery-success.png'
 import { OrderDetails } from '../../components/OrderDetails'
 import { AddressPaymentContext } from '../../contexts/AddressPaymentContext'
-import { CartContext } from '../../contexts/CardContext'
+import { CartContext } from '../../contexts/CartContext'
 import {
   GoBackdiv,
   OrderConfirmed,
@@ -13,11 +13,11 @@ import {
 
 export function Success() {
   const { handleResetAddressAndPayment } = useContext(AddressPaymentContext)
-  const { handleResetCard } = useContext(CartContext)
+  const { handleResetCart } = useContext(CartContext)
   const navigate = useNavigate()
 
   function onResetData() {
-    handleResetCard()
+    handleResetCart()
     handleResetAddressAndPayment()
     navigate('/')
   }

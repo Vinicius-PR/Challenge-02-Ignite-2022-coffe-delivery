@@ -1,7 +1,7 @@
 import { Coffee, CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { useContext } from 'react'
 import { AddressPaymentContext } from '../../contexts/AddressPaymentContext'
-import { CartContext } from '../../contexts/CardContext'
+import { CartContext } from '../../contexts/CartContext'
 import {
   Address,
   AddressIcon,

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const CoffeeContainer = styled.div`
-  background-color: ${(props) => props.theme['base-card']};
+  background-color: ${(props) => props.theme['base-cart']};
   width: 16rem;
   height: 19.5rem;
   display: flex;
@@ -85,7 +85,7 @@ export const CartBtn = styled.button`
   height: 2.375rem;
   border-radius: 6px;
   background-color: ${(props) => props.theme['purple-dark']};
-  color: ${(props) => props.theme['base-card']};
+  color: ${(props) => props.theme['base-cart']};
   display: flex;
   justify-content: center;
   align-items: center;

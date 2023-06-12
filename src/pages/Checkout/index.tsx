@@ -1,5 +1,5 @@
 import { CheckoutAddress } from '../../components/CheckoutAddress'
-import { CoffeeCard } from '../../components/CoffeeCard'
+import { CoffeeCart } from '../../components/CoffeeCart'
 import { PaymentsMethods } from '../../components/PaymentsMethods'
 import { useForm, FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -70,7 +70,7 @@ export function Checkout() {
           </CheckoutAddressAndPayment>
         </CheckoutDetalis>
 
-        <CoffeeCard />
+        <CoffeeCart />
       </CheckoutContainerForm>
     </FormProvider>
   )

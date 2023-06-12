@@ -9,11 +9,11 @@ export enum ActionsCartTypes {
   RESET_CART = 'RESET_CART',
 }
 
-export function addCoffeeToCartAction(newCoffeeToCard: CoffeeProductProps) {
+export function addCoffeeToCartAction(newCoffeeToCart: CoffeeProductProps) {
   return {
     type: ActionsCartTypes.ADD_COFFEE_TO_CART,
     payload: {
-      newCoffeeToCard,
+      newCoffeeToCart,
     },
   }
 }
