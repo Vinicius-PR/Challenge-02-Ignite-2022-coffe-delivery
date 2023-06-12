@@ -30,7 +30,7 @@ In addition, the aplication uses the following advanced features:
 
 * **Zip Code api:** The application has a feature to retrieve the address from zip  code that the user will put on the form. This way, can auto complete the data that will be found from api.
 
-* **localStorage:** LocalStorage is used to maintain the cart data. So it won't be lost the user refreshes the page.
+* **localStorage:** LocalStorage is used to maintain the cart data. So it won't be lost if the user refreshes the page.
 
 * **Responsiveness:** To let the challenge completed, I included in the responsive design. So the application looks good on mobile and desktop.
 
@@ -71,7 +71,7 @@ If you don't have an IDE, install one of you preference. In my case, I used Visu
 You clone the project. Use the commande line on your folder:
  > git clone https://github.com/Vinicius-PR/Challenge-02-Ignite-2022-coffe-delivery
  
- ### Forth
+ ### Fourth
  
 Open the folder using your IDE. Then, go to the terminal of your IDE and type the following command to install the dependencies: (or can go to the folder application using normal terminal and type the same command)
  > npm install
